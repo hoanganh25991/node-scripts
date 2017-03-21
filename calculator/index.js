@@ -1,4 +1,5 @@
-let Calc = require(`${__dirname}/calculator.js`);
+// let Calc = require(`${__dirname}/calculator.js`);
+let math = require('mathjs');
 
 var clipboardHandler = require('copy-paste');
 
@@ -6,8 +7,7 @@ let expression = process.argv[2];
 // console.log(expression);
 
 if(expression){
-	calc = new Calc(expression);
-	let r = calc.parse();
+	let r = math.eval(expression);
 	clipboardHandler.copy(r, ()=>{
 		console.log(`Copied to clipboard\nResult: ${r}`);
 	});
