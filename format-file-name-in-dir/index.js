@@ -32,7 +32,11 @@ fs.readdir(directory, function (err, items) {
     if (!p.test(item) && item != newName) {
       const oldPath = directory + "/" + item;
       const newPath = directory + "/" + newName;
-      fs.rename(oldPath, newPath, console.log);
+
+      fs.rename(oldPath, newPath, (err) => {
+        console.log("%s => \033[01;32m%s\033[0m", item, newName);
+        err && console.log(err);
+      });
     }
   });
 });
