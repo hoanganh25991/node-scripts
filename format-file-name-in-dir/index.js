@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const directory = process.argv[2];
+const directory = process.argv[2] || process.cwd();
 console.log("[dirname]", directory);
 
 const formatFilename = function (s) {
