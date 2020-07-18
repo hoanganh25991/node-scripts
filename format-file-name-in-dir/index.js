@@ -4,20 +4,23 @@ const directory = process.argv[2] || process.cwd();
 console.log("[dirname]", directory);
 
 const formatFilename = function (s) {
-  //trim s, remove space begin&end
+  // trim s, remove space begin&end
   s = s.trim();
 
-  //turn into -
+  // turn into -
   s = s.replace(/(\s|_|\+)+/g, "-");
 
-  //only one - form multiple ---
+  // only one - form multiple ---
   s = s.replace(/-+/g, "-");
 
   //convert to lower
   s = s.toLowerCase();
 
-  //remove microsoft-teams
+  // remove microsoft-teams
   s = s.replace("-microsoft-teams", "");
+
+  // remove pdf-drive
+  s = s.replace("-(-pdfdrive.com-)", "");
 
   return s;
 };
